@@ -1,0 +1,1015 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head><body><title>INFONDA 2026 — Plan Financiero</title>
+<style>
+  :root{
+    --page:#f7f7f5; --surface:#fcfcfb; --surface-2:#f0efec;
+    --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781;
+    --grid:#e1e0d9; --border:rgba(11,11,11,.10); --hair:rgba(11,11,11,.08);
+    --accent:#2a78d6; --accent-ink:#1c5cab; --accent-soft:#e3eefb;
+    --s1:#2a78d6; --s2:#1baf7a; --s3:#eda100; --s4:#008300;
+    --neg:#d03b3b; --pos:#006300; --warnbg:#fdf3e4; --warnbd:#eda100;
+    --riskbg:#fbeaea; --riskbd:#d03b3b;
+    --shadow:0 1px 2px rgba(11,11,11,.05),0 8px 24px rgba(11,11,11,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --page:#0d0d0d; --surface:#1a1a19; --surface-2:#242422;
+      --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
+      --grid:#2c2c2a; --border:rgba(255,255,255,.10); --hair:rgba(255,255,255,.08);
+      --accent:#3987e5; --accent-ink:#86b6ef; --accent-soft:#16283d;
+      --s1:#3987e5; --s2:#199e70; --s3:#c98500; --s4:#008300;
+      --neg:#e66767; --pos:#0ca30c; --warnbg:#2b230f; --warnbd:#c98500;
+      --riskbg:#331717; --riskbd:#e66767;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --page:#0d0d0d; --surface:#1a1a19; --surface-2:#242422;
+    --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
+    --grid:#2c2c2a; --border:rgba(255,255,255,.10); --hair:rgba(255,255,255,.08);
+    --accent:#3987e5; --accent-ink:#86b6ef; --accent-soft:#16283d;
+    --s1:#3987e5; --s2:#199e70; --s3:#c98500; --s4:#008300;
+    --neg:#e66767; --pos:#0ca30c; --warnbg:#2b230f; --warnbd:#c98500;
+    --riskbg:#331717; --riskbd:#e66767;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  }
+  :root[data-theme="light"]{
+    --page:#f7f7f5; --surface:#fcfcfb; --surface-2:#f0efec;
+    --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781;
+    --grid:#e1e0d9; --border:rgba(11,11,11,.10); --hair:rgba(11,11,11,.08);
+    --accent:#2a78d6; --accent-ink:#1c5cab; --accent-soft:#e3eefb;
+    --s1:#2a78d6; --s2:#1baf7a; --s3:#eda100; --s4:#008300;
+    --neg:#d03b3b; --pos:#006300; --warnbg:#fdf3e4; --warnbd:#eda100;
+    --riskbg:#fbeaea; --riskbd:#d03b3b;
+    --shadow:0 1px 2px rgba(11,11,11,.05),0 8px 24px rgba(11,11,11,.06);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *{transition:none !important;animation:none !important}
+  }
+  body{
+    margin:0; background:var(--page); color:var(--ink);
+    font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .num{font-variant-numeric:tabular-nums}
+  a{color:var(--accent-ink)}
+
+  nav{
+    position:sticky; top:0; z-index:50; background:color-mix(in srgb,var(--page) 88%,transparent);
+    backdrop-filter:blur(8px); border-bottom:1px solid var(--hair);
+  }
+  .navin{max-width:1080px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .brand{font-family:Georgia,serif;font-weight:700;font-size:15px;letter-spacing:.02em;white-space:nowrap}
+  .brand small{color:var(--accent-ink);font-family:system-ui,sans-serif;font-weight:600;margin-left:6px;font-size:11px;letter-spacing:.12em}
+  .navlinks{display:flex;gap:2px;flex-wrap:wrap}
+  .navlinks a{color:var(--ink-2);text-decoration:none;font-size:12.5px;padding:5px 9px;border-radius:6px}
+  .navlinks a:hover{background:var(--surface-2);color:var(--ink)}
+  .navlinks a:focus-visible, button:focus-visible, input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  main{max-width:1080px;margin:0 auto;padding:0 24px 80px}
+
+  header.hero{padding:56px 0 8px}
+  .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-ink);font-weight:700;margin:0 0 14px}
+  h1{font-family:Georgia,serif;font-size:clamp(30px,4.6vw,46px);line-height:1.08;margin:0 0 16px;text-wrap:balance;font-weight:700}
+  .lede{max-width:64ch;color:var(--ink-2);font-size:16.5px;margin:0 0 8px}
+  .hero-meta{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 0}
+  .chip{font-size:12px;font-weight:600;color:var(--ink-2);background:var(--surface);border:1px solid var(--border);border-radius:99px;padding:4px 12px;display:inline-flex;align-items:center;gap:7px}
+  .chip .dot{width:9px;height:9px;border-radius:50%;flex:none}
+
+  section{margin-top:64px;scroll-margin-top:72px}
+  h2{font-family:Georgia,serif;font-size:26px;margin:0 0 6px;text-wrap:balance}
+  .kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 6px}
+  .sub{color:var(--ink-2);max-width:70ch;margin:0 0 22px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow)}
+  .pad{padding:20px 22px}
+  .panel-lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:28px}
+  .tile{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;box-shadow:var(--shadow)}
+  .tile .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .tile .val{font-size:27px;font-weight:700;margin-top:6px;letter-spacing:-.01em}
+  .tile .cap{font-size:12px;color:var(--ink-2);margin-top:4px}
+  .val.neg{color:var(--neg)}
+
+  .rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+  .rule{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+  .rule h3{margin:0 0 6px;font-size:14.5px}
+  .rule p{margin:0;font-size:13px;color:var(--ink-2)}
+  .rule .tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent-soft);border-radius:5px;padding:2px 8px;margin-bottom:9px}
+
+  .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .ctl .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:7px}
+  .seg{display:flex;background:var(--surface-2);border:1px solid var(--border);border-radius:9px;padding:3px;gap:3px;flex-wrap:wrap}
+  .seg button{
+    flex:1;min-width:60px;border:0;background:transparent;color:var(--ink-2);font:600 12.5px/1.2 system-ui,sans-serif;
+    padding:8px 8px;border-radius:7px;cursor:pointer;transition:background .15s,color .15s;white-space:nowrap;
+  }
+  .seg button:hover{color:var(--ink)}
+  .seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(11,11,11,.12);border:1px solid var(--border)}
+
+  /* parámetros editables */
+  details.params{background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);margin-top:16px}
+  details.params > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;padding:16px 22px;
+    font-weight:700;font-size:14px;
+  }
+  details.params > summary::-webkit-details-marker{display:none}
+  details.params > summary .arrow{transition:transform .15s;color:var(--muted)}
+  details.params[open] > summary .arrow{transform:rotate(90deg)}
+  .params-body{padding:4px 22px 20px;display:grid;gap:18px}
+  .pgroup h4{margin:0 0 10px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:10px 16px}
+  .pfield{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12.5px;color:var(--ink-2)}
+  .pfield label{flex:1;min-width:0}
+  .pfield input[type=number], .pfield input[type=date]{
+    width:104px;padding:6px 8px;border:1px solid var(--border);border-radius:7px;
+    background:var(--surface-2);color:var(--ink);font:600 13px/1 system-ui,sans-serif;text-align:right;
+    font-variant-numeric:tabular-nums;
+  }
+  .pfield input[type=date]{width:150px;text-align:left}
+  .switch{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--ink-2);font-weight:600;cursor:pointer}
+  .switch input{width:17px;height:17px;accent-color:var(--accent);cursor:pointer}
+  .btn{
+    border:1px solid var(--border);background:var(--surface-2);color:var(--ink);font:600 12.5px/1 system-ui,sans-serif;
+    padding:9px 14px;border-radius:8px;cursor:pointer;
+  }
+  .btn:hover{background:var(--accent-soft)}
+
+  /* banco de modelado (reemplaza al panel plegable) */
+  .parambank-wrap{padding:18px 22px 22px}
+  .bank-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+  .bank-head .panel-lbl{font-size:13px;letter-spacing:.04em;text-transform:none;color:var(--ink);font-weight:700}
+  .pgroup .sub-note{font-size:12px;color:var(--muted);margin:-4px 0 10px}
+  .bankgrid{display:grid;grid-template-columns:1.15fr 1fr;gap:16px;margin-top:16px;align-items:start}
+.parambank-wrap .params-body{padding:0;display:grid;gap:18px}
+  .resultcol{position:sticky;top:74px;display:grid;gap:16px}
+  @media(max-width:960px){.bankgrid{grid-template-columns:1fr}.resultcol{position:static}}
+  .pfield.ro{align-items:center}
+  .pfield.ro label{color:var(--ink-2)}
+  .pfield.ro .ro-val{font-weight:700;color:var(--ink);font-size:13px;font-variant-numeric:tabular-nums;min-width:104px;text-align:right;padding:6px 10px;background:var(--accent-soft);border:1px solid var(--accent);border-radius:7px}
+  /*\widgets de modelado compactos*/
+  .pgrid.tight{grid-template-columns:repeat(auto-fill,minmax(205px,1fr))}
+
+  .simgrid{display:grid;grid-template-columns:1.05fr 1fr;gap:16px}
+  @media(max-width:840px){.simgrid{grid-template-columns:1fr}}
+  .bigresult .val{font-size:clamp(34px,4.5vw,44px);font-weight:700;letter-spacing:-.02em;line-height:1.05;margin:6px 0 2px}
+  .bigresult .cfg{font-size:12.5px;color:var(--ink-2)}
+  .statrow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+  .ministat{background:var(--surface-2);border-radius:9px;padding:10px 13px}
+  .ministat .k{font-size:11px;color:var(--muted);font-weight:600}
+  .ministat .v{font-size:17px;font-weight:700;margin-top:2px}
+  .flag{border-radius:9px;padding:10px 14px;font-size:12.5px;font-weight:600;margin-top:14px;display:none}
+  .flag.on{display:block}
+  .flag.bad{background:var(--riskbg);border:1px solid var(--riskbd);color:var(--ink)}
+  .flag.warn{background:var(--warnbg);border:1px solid var(--warnbd);color:var(--ink)}
+
+  .bars{display:grid;gap:9px;margin-top:6px}
+  .brow{display:grid;grid-template-columns:150px 1fr 92px;align-items:center;gap:10px;font-size:12.5px}
+  .brow .bl{color:var(--ink-2);font-weight:600;display:flex;align-items:center;gap:7px;min-width:0}
+  .brow .bl .dot{width:9px;height:9px;border-radius:50%;flex:none}
+  .brow .bl span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .track{height:20px;background:var(--surface-2);border-radius:5px;overflow:hidden;position:relative}
+  .fill{height:100%;border-radius:0 4px 4px 0;transition:width .35s ease;min-width:2px}
+  .bval{text-align:right;font-weight:700}
+  @media(max-width:560px){.brow{grid-template-columns:104px 1fr 86px}}
+
+  .twrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:560px}
+  th{text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;padding:11px 14px;border-bottom:1px solid var(--grid);white-space:nowrap}
+  td{padding:10px 14px;border-bottom:1px solid var(--hair);vertical-align:top}
+  tbody tr:last-child td{border-bottom:0}
+  tr.total td{font-weight:700;background:var(--surface-2)}
+  td.r,th.r{text-align:right}
+  td.neg{color:var(--neg);font-weight:600}
+  .cellhl{box-shadow:inset 0 0 0 2px var(--accent);border-radius:6px;font-weight:700}
+  .src{font-size:11.5px;color:var(--muted)}
+
+  .badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;border-radius:5px;padding:2px 7px;text-transform:uppercase}
+  .badge.q{background:var(--warnbg);border:1px solid var(--warnbd);color:var(--ink)}
+  .badge.c{background:var(--accent-soft);border:1px solid var(--accent);color:var(--ink)}
+  .badge.k{background:var(--riskbg);border:1px solid var(--riskbd);color:var(--ink)}
+
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:760px){.duo{grid-template-columns:1fr}}
+  .venue h3{font-family:Georgia,serif;font-size:19px;margin:0 0 2px}
+  .venue .loc{font-size:12px;color:var(--muted);margin-bottom:12px}
+  .venue ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink-2);display:grid;gap:6px}
+  .callout{border-radius:12px;padding:18px 20px;margin-top:16px}
+  .callout.risk{background:var(--riskbg);border:1px solid var(--riskbd)}
+  .callout.info{background:var(--accent-soft);border:1px solid var(--accent)}
+  .callout h3{margin:0 0 6px;font-size:14.5px}
+  .callout p{margin:0;font-size:13.5px;color:var(--ink-2)}
+
+  .checklist{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px}
+  .check{display:flex;gap:11px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:13px}
+  .check .n{flex:none;width:24px;height:24px;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink);font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center}
+
+  /* timeline */
+  .tl{position:relative;margin-top:8px;padding-left:26px}
+  .tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--grid);border-radius:2px}
+  .tlitem{position:relative;padding:10px 0 14px}
+  .tlitem::before{content:"";position:absolute;left:-24px;top:16px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:3px solid var(--muted)}
+  .tlitem.crit::before{border-color:var(--neg)}
+  .tlitem.dec::before{border-color:var(--warnbd)}
+  .tlhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .tldate{font-weight:700;font-size:13.5px;white-space:nowrap}
+  .tldias{font-size:11px;color:var(--muted);font-weight:600;white-space:nowrap}
+  .tltitle{font-weight:600;font-size:13.5px}
+  .tlnote{font-size:12.5px;color:var(--ink-2);margin-top:3px;max-width:78ch}
+  .tlmonto{font-size:12.5px;font-weight:700;margin-top:2px}
+  .tlmonto small{color:var(--muted);font-weight:600}
+
+  footer{margin-top:70px;border-top:1px solid var(--hair);padding-top:22px;font-size:12.5px;color:var(--muted)}
+  footer ul{margin:8px 0 0;padding-left:18px;display:grid;gap:4px}
+</style>
+
+<nav>
+  <div class="navin">
+    <div class="brand">INFONDA<small>2026</small></div>
+    <div class="navlinks">
+      <a href="#modelo">Modelo</a>
+      <a href="#simulador">Simulador</a>
+      <a href="#carreras">Por carrera</a>
+      <a href="#entradas">Entradas</a>
+      <a href="#barra">Barra</a>
+      <a href="#produccion">Producción</a>
+      <a href="#timeline">Línea de tiempo</a>
+      <a href="#sedes">Sedes</a>
+      <a href="#fuentes">Fuentes</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <header class="hero">
+    <p class="eyebrow">Plan financiero y simulador · Presentación para los 4 CEE</p>
+    <h1>INFONDA 2026: un evento, cuatro carreras, un modelo que cuadra al peso.</h1>
+    <p class="lede">
+      Escenarios, rendimiento por carrera, precios con Evently, contingencia de lluvia (carpa o reagendamiento) y la
+      línea de tiempo de compromisos. Todos los valores son <strong>editables</strong>: esta página es un simulador
+      del evento con las mismas fórmulas del Excel maestro.
+    </p>
+    <div class="hero-meta">
+      <span class="chip"><span class="dot" style="background:var(--s1)"></span>Medicina</span>
+      <span class="chip"><span class="dot" style="background:var(--s2)"></span>Ing. Civil Industrial</span>
+      <span class="chip"><span class="dot" style="background:var(--s3)"></span>Derecho</span>
+      <span class="chip"><span class="dot" style="background:var(--s4)"></span>Ing. Civil Química</span>
+      <span class="chip">Fecha tentativa: vie 11-09-2026</span>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="lbl">Pesimista</div><div class="val num" id="kpiP">—</div><div class="cap" id="kpiPcap">Balance neto</div></div>
+      <div class="tile"><div class="lbl">Intermedio</div><div class="val num" id="kpiI">—</div><div class="cap" id="kpiIcap">Balance neto</div></div>
+      <div class="tile"><div class="lbl">Optimista</div><div class="val num" id="kpiO">—</div><div class="cap" id="kpiOcap">Balance neto</div></div>
+    </div>
+    <p class="src" style="margin-top:10px" id="kpiNote">Con la sede, producción y parámetros seleccionados en el simulador.</p>
+  </header>
+
+  <!-- ===================== MODELO ===================== -->
+  <section id="modelo">
+    <p class="kicker">Cómo funciona</p>
+    <h2>Cuatro reglas que ordenan el proyecto</h2>
+    <p class="sub">Acordadas entre los CEE. Son las mismas reglas programadas en el Excel maestro y en este simulador.</p>
+    <div class="rules">
+      <div class="rule">
+        <span class="tag">Costos comunes</span>
+        <h3>Proporcional a entradas vendidas</h3>
+        <p>Cada carrera asume el porcentaje de los costos comunes según las entradas que vende. Quien más vende, más aporta — y más gana.</p>
+      </div>
+      <div class="rule">
+        <span class="tag">Barra</span>
+        <h3>Cada carrera opera su barra</h3>
+        <p>Como el año pasado: cada CEE compra sus insumos, vende y retiene su margen. Calibrado con la operación real de Industrial 2025.</p>
+      </div>
+      <div class="rule">
+        <span class="tag">Ticketera</span>
+        <h3>100% Evently, sin efectivo</h3>
+        <p>El comprador paga el precio base + 10% de cargo por servicio (ej: $4.000 → paga $4.400). El CEE recibe el precio base íntegro.</p>
+      </div>
+      <div class="rule">
+        <span class="tag">Clima</span>
+        <h3>La lluvia se gestiona, no se sufre</h3>
+        <p>Dos caminos: carpa 30×50 m (elimina el riesgo) o cláusula de reagendamiento + fecha alternativa (lo administra). Ver línea de tiempo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SIMULADOR ===================== -->
+  <section id="simulador">
+    <p class="kicker">Banco de modelado · todos los valores editables</p>
+    <h2>Simulador del evento</h2>
+    <p class="sub">Como el ingeniero del proyecto: cada ingreso, precio, partida de producción, costo de infraestructura y vaso de la barra está a la vista y se edita en el banco de la izquierda. La columna de la derecha muestra resultados <strong>fijos</strong> mientras modelas, y toda la página se recalcula al instante.</p>
+
+    <div class="card pad">
+      <div class="controls">
+        <div class="ctl">
+          <div class="lbl">Sede</div>
+          <div class="seg" id="segSede" role="group" aria-label="Sede">
+            <button aria-pressed="true" data-i="0">Tineo · Chica</button>
+            <button aria-pressed="false" data-i="1">Tineo · +½ grande</button>
+            <button aria-pressed="false" data-i="2">Aeroparque</button>
+          </div>
+        </div>
+        <div class="ctl">
+          <div class="lbl">Producción técnica</div>
+          <div class="seg" id="segProd" role="group" aria-label="Producción">
+            <button aria-pressed="true" data-i="0">A · Concepsound</button>
+            <button aria-pressed="false" data-i="1">B · Autoproducción</button>
+          </div>
+        </div>
+        <div class="ctl">
+          <div class="lbl">Escenario</div>
+          <div class="seg" id="segEsc" role="group" aria-label="Escenario">
+            <button aria-pressed="false" data-i="0">Pesimista</button>
+            <button aria-pressed="true" data-i="1">Intermedio</button>
+            <button aria-pressed="false" data-i="2">Optimista</button>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;align-items:center">
+        <label class="switch"><input type="checkbox" id="swCarpa"> Incluir carpa contingencia lluvia <span class="src num" id="carpaCosto"></span></label>
+        <label class="switch"><input type="checkbox" id="swBanos40"> Aplicar exigencia 40 baños también en Tineo</label>
+        <button class="btn" id="btnReset" type="button">↺ Restaurar valores del modelo</button>
+      </div>
+    </div>
+
+    <div class="bankgrid">
+      <div class="card parambank-wrap">
+        <div class="bank-head">
+          <span class="panel-lbl">Banco de modelado — todos los parámetros editables</span>
+          <span class="src">Edita cualquier valor; la columna de la derecha recalcula al instante.</span>
+        </div>
+        <div class="params-body" id="paramsBody"></div>
+      </div>
+
+      <div class="resultcol">
+        <div class="card pad bigresult">
+          <div class="panel-lbl">Balance neto del evento</div>
+          <div class="val num" id="simBalance">—</div>
+          <div class="cfg" id="simCfg">—</div>
+          <div class="statrow">
+            <div class="ministat"><div class="k">Ingreso por entradas</div><div class="v num" id="simIngEnt">—</div></div>
+            <div class="ministat"><div class="k">Margen neto de barra</div><div class="v num" id="simBarra">—</div></div>
+            <div class="ministat"><div class="k">Gastos fijos totales</div><div class="v num" id="simGastos">—</div></div>
+            <div class="ministat"><div class="k">Punto de equilibrio</div><div class="v num" id="simPeq">—</div></div>
+          </div>
+          <div class="flag bad" id="flagNeg">⚠ Esta combinación da <strong>déficit</strong>: exige más venta o menor costo de sede/producción.</div>
+          <div class="flag bad" id="flagAero">⚠ Aeroparque: exigencia mínima de baños (<span id="flagBanosTxt">40 × $80.000 = $3,2M</span>) y precedente de permiso de alcohol negado en Talcahuano (may-2026). Confirmar permiso <strong>por escrito antes de firmar</strong>.</div>
+          <div class="flag warn" id="flagCarpa">🎪 Carpa incluida: <span id="flagCarpaTxt"></span>. Elimina el riesgo de lluvia; compárenla contra el plan de reagendamiento (costo ≈ $0 con cláusulas).</div>
+        </div>
+
+        <div class="card pad">
+          <div class="panel-lbl">Desglose de gastos</div>
+          <div class="bars" id="gastoBars" style="margin-top:12px"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card pad" style="margin-top:16px">
+      <div class="panel-lbl">Balance por sede y escenario — la celda marcada es la selección actual</div>
+      <div class="twrap" style="margin-top:12px;border:0">
+        <table id="matrixTable">
+          <thead><tr><th>Sede</th><th class="r">Pesimista</th><th class="r">Intermedio</th><th class="r">Optimista</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="src" style="margin-top:8px">Incluye producción seleccionada, baños según sede (Aeroparque: exigencia mínima) y carpa solo si está activada (solo Tineo). Negativos entre paréntesis.</p>
+    </div>
+  </section>
+
+  <!-- ===================== POR CARRERA ===================== -->
+  <section id="carreras">
+    <p class="kicker">Lo central</p>
+    <h2>Rendimiento esperado por carrera</h2>
+    <p class="sub">Resultado neto de cada CEE: su ingreso por entradas + el margen de su propia barra − su parte proporcional de los costos comunes. La suma de las cuatro carreras es exactamente el balance global del evento.</p>
+
+    <div class="card pad">
+      <div class="panel-lbl">Resultado neto por carrera — <span id="escLabel">Intermedio</span> (según simulador)</div>
+      <div class="bars" id="carreraBars" style="margin-top:14px"></div>
+    </div>
+
+    <div class="twrap" style="margin-top:16px">
+      <table id="carreraTable">
+        <thead>
+          <tr><th>Carrera</th><th class="r">Entradas</th><th class="r">Ingreso entradas</th><th class="r">Margen barra</th><th class="r">Costos asignados</th><th class="r">Resultado neto</th><th class="r">Margen</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="src" style="margin-top:8px">Cada barra captura los tragos de sus asistentes más una fracción proporcional del consumo de externos. Entradas supuestas para Derecho e Ing. Civil Química: editables en Parámetros.</p>
+  </section>
+
+  <!-- ===================== ENTRADAS ===================== -->
+  <section id="entradas">
+    <p class="kicker">Precio potencial</p>
+    <h2>Escalera de precios y el efecto Evently</h2>
+    <p class="sub">Cuatro olas de venta. El precio base es lo que recibe el CEE; el comprador paga el cargo por servicio adicional que retiene Evently — hay que comunicar el precio final en la difusión.</p>
+    <div class="twrap">
+      <table id="olasTable">
+        <thead><tr><th>Ola de venta</th><th class="r">% de entradas</th><th class="r">Precio base (recibe CEE)</th><th class="r">Precio final (paga comprador)</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="callout info">
+      <h3>Flujo de caja: Evently no paga el día del evento</h3>
+      <p>Las devoluciones y liquidaciones pueden tomar hasta 60 días hábiles según sus términos. Los pagos del día (guardias, ambulancia, toro) salen de caja propia — hay que provisionarlos. La reprogramación por lluvia mantiene las entradas vendidas.</p>
+    </div>
+  </section>
+
+  <!-- ===================== BARRA ===================== -->
+  <section id="barra">
+    <p class="kicker">Calibrado con datos reales</p>
+    <h2>La barra: lo que aprendimos del año pasado</h2>
+    <p class="sub">La barra de Industrial 2025 vendió 220 piscolas, 233 terremotos y 14 latas con $420.000 de insumos. Esos datos reales calibran cada supuesto del modelo.</p>
+    <div class="tiles" style="margin-top:0">
+      <div class="tile"><div class="lbl">Tragos por persona</div><div class="val num">1,47</div><div class="cap">467 tragos / 317 asistentes · escenarios: 1,3 – 1,5 – 1,8</div></div>
+      <div class="tile"><div class="lbl">Costo real por trago</div><div class="val num">$900</div><div class="cap">$420.000 / 467 tragos</div></div>
+      <div class="tile"><div class="lbl">Margen bruto real</div><div class="val num">60%</div><div class="cap">Antes de IVA; el modelo usa margen neto</div></div>
+      <div class="tile"><div class="lbl">Piscolas por botella</div><div class="val num">8,8</div><div class="cap">25 piscos usados (42 comprados − 17 sobrantes)</div></div>
+    </div>
+
+    <div class="card pad" style="margin-top:16px">
+      <div class="panel-lbl">Margen neto por vaso (precio × (1−IVA) − insumo)</div>
+      <div class="bars" id="drinkBars" style="margin-top:14px"></div>
+      <p class="src" style="margin-top:10px">El terremoto rinde más que la piscola incluso subiéndola a $2.500 — conviene empujar el terremoto en la difusión y la carta.</p>
+    </div>
+
+    <div class="twrap" style="margin-top:16px">
+      <table id="compraTable">
+        <thead><tr><th>Carrera</th><th class="r">Asistencia esperada</th><th class="r">Presupuesto de insumos</th><th class="r">Ingreso esperado</th><th class="r">Margen neto esperado</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="src" style="margin-top:8px">Presupuesto de compra por carrera según el escenario del simulador. Regla práctica: ≈ $1.325 de insumos por asistente + 10–15% de holgura; perecibles solo con GO confirmado.</p>
+  </section>
+
+  <!-- ===================== PRODUCCIÓN ===================== -->
+  <section id="produccion">
+    <p class="kicker">Decisión pendiente</p>
+    <h2>Producción técnica: ¿productora o autoproducción?</h2>
+    <p class="sub">Dos caminos con casi el mismo precio. La diferencia real no es plata: es quién asume el riesgo del montaje.</p>
+    <div class="duo">
+      <div class="card pad">
+        <h3 style="font-family:Georgia,serif;margin:0 0 4px;font-size:19px">Opción A — Concepsound <span class="badge c">Confirmado</span></h3>
+        <div class="num" style="font-size:30px;font-weight:700;margin:8px 0 4px" id="prodAVal">$2.400.000</div>
+        <p style="font-size:13px;color:var(--ink-2);margin:0 0 10px">Todo incluido: DJ, sonido, escenario y operación. Un solo responsable, un solo contrato.</p>
+        <p class="src">Fuente: cotización real Concepsound (jul-2026).</p>
+      </div>
+      <div class="card pad">
+        <h3 style="font-family:Georgia,serif;margin:0 0 4px;font-size:19px">Opción B — Autoproducción <span class="badge q">Cotizar</span></h3>
+        <div class="num" style="font-size:30px;font-weight:700;margin:8px 0 4px" id="prodBVal">$2.270.000</div>
+        <p style="font-size:13px;color:var(--ink-2);margin:0 0 10px">Ahorra <span id="prodDif">$130.000</span>, pero el CEE coordina montaje, energía y responsables. Valores de referencia de mercado, pendientes de cotización formal.</p>
+        <p class="src">Fuentes: SK Rental, Cummins, Bahía Diseño, Bestcorp, 2x3.cl.</p>
+      </div>
+    </div>
+    <div class="twrap" style="margin-top:16px">
+      <table id="prodTable">
+        <thead><tr><th>Partida (Opción B)</th><th class="r">Rango mercado</th><th class="r">Modelado (editable en el banco)</th><th>Estado</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="src" style="margin-top:8px">Carpa: ref. $2.800–3.500/m² instalada — 2x3.cl, todofiestas.cl, eventosycarpas.cl, carpasbeduinas.cl (Concepción). Baños: exigencia Aeroparque ~40 u × $80.000 (dato del recinto, jul-2026).</p>
+  </section>
+
+  <!-- ===================== LÍNEA DE TIEMPO ===================== -->
+  <section id="timeline">
+    <p class="kicker">Planificación y lluvia</p>
+    <h2>Línea de tiempo de compromisos</h2>
+    <p class="sub">Qué es obligatorio, cuándo se compromete la plata y hasta cuándo se puede reagendar sin perderla. Septiembre es lluvioso: la estrategia es <strong>cláusula de cambio de fecha en todos los contratos</strong> + decisión GO/NO-GO 7 días antes con pronóstico confiable.</p>
+
+    <div class="card pad" style="margin-bottom:16px">
+      <div style="display:flex;gap:22px;flex-wrap:wrap;align-items:center">
+        <div class="pfield" style="max-width:280px"><label><strong>Fecha del evento</strong></label><input type="date" id="fechaEvento" value="2026-09-11"></div>
+        <div class="src">Fecha alternativa sugerida: <strong>viernes 02-10-2026</strong> (pasa el peak de lluvia y no choca con fiestas patrias). Debe estar a ≥1 mes para re-tramitar la Delegación Presidencial.</div>
+      </div>
+    </div>
+
+    <div class="card pad">
+      <div class="tl" id="tlList"></div>
+    </div>
+
+    <div class="callout info" style="margin-top:16px">
+      <h3>Si se reagenda con las cláusulas firmadas, se pierde poco</h3>
+      <p id="perdidaTxt">Patente de alcohol (~$286.596, se re-solicita) + perecibles si ya se compraron (~15% del presupuesto de barra) + ~1 mes de trámite de la Delegación Presidencial. Todo lo demás — sede, producción, carpa, pulseras, insumos no perecibles, entradas Evently — se traslada a la nueva fecha.</p>
+    </div>
+  </section>
+
+  <!-- ===================== SEDES ===================== -->
+  <section id="sedes">
+    <p class="kicker">Investigación de recintos</p>
+    <h2>Tineo Park vs. Aeroparque Bío Bío</h2>
+    <p class="sub">Ficha comparativa con lo que encontramos en la investigación (julio 2026) y la cotización real por correo.</p>
+    <div class="duo">
+      <div class="card pad venue">
+        <h3>Tineo Park <span style="color:var(--muted);font-weight:400;font-size:13px">· Club de Rugby Los Troncos</span></h3>
+        <div class="loc">Ruta 150 #3200, Penco · arriendo $1,7M (chica) / $2,5M (+½ grande)</div>
+        <ul>
+          <li>Estadio deportivo: césped natural, iluminación nocturna, vestuarios, quincho, tribunas.</li>
+          <li>Recinto abierto → exige <strong>vallas papales</strong> (~80 u) para delimitar barra, accesos y escenario.</li>
+          <li>Producción completa por nuestra cuenta: escenario, PA y <strong>generador</strong>.</li>
+          <li>Lluvia: opción de <strong>carpa 30×50 m</strong> (~$4,2–5,3M instalada) o plan de reagendamiento.</li>
+          <li>Baños: escala por asistencia (~$400–800 mil), salvo que la exigencia de 40 u aplique también aquí.</li>
+          <li>Proteger el césped (cancha en uso): pasarelas y cubrepisos.</li>
+        </ul>
+      </div>
+      <div class="card pad venue">
+        <h3>Aeroparque Bío Bío</h3>
+        <div class="loc">Av. Pdte. Jorge Alessandri 4601, Talcahuano · arriendo $3,2M (incluye aseo)</div>
+        <ul>
+          <li>Recinto probado en masivos: Dominga Open Air (ene y feb 2026), vendido por Evently.</li>
+          <li>Garantía $500.000 · horario límite 12:00 AM · exige mitigación acústica y directiva de funcionamiento.</li>
+          <li>Exige <strong>permiso municipal de venta de alcohol</strong> (condición del recinto, por correo).</li>
+          <li><strong>Baños: exigencia mínima ~40 u × $80.000 = $3.200.000</strong> (dato del recinto, jul-2026).</li>
+          <li>Producción más simple: infraestructura de eventos existente (confirmar potencia y qué incluye el canon).</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout risk">
+      <h3>⚠ Riesgo documentado — permiso de alcohol en Talcahuano</h3>
+      <p>En mayo 2026, la Municipalidad de Talcahuano <strong>negó la venta de alcohol</strong> a una fiesta electrónica junto al Aeroparque, y Carabineros declaró el evento inviable (sabes.cl, 15-05-2026). Cualquiera sea la sede: <strong>permiso confirmado por escrito antes de firmar el arriendo.</strong></p>
+    </div>
+
+    <h2 style="margin-top:44px;font-size:21px">Fundamentales para que funcione</h2>
+    <div class="checklist" style="margin-top:14px">
+      <div class="check"><div class="n">1</div><div>Permiso municipal de alcohol confirmado <strong>por escrito antes de firmar</strong> la sede.</div></div>
+      <div class="check"><div class="n">2</div><div>Solicitud de evento masivo a la <strong>Delegación Presidencial con ≥20 días hábiles</strong> (para el 11-09: vence ~14-08).</div></div>
+      <div class="check"><div class="n">3</div><div>Cláusula de cambio de fecha por lluvia en TODOS los contratos + fecha alternativa pactada.</div></div>
+      <div class="check"><div class="n">4</div><div>Aforo formal ≥ 1.900 personas (escenario optimista) + plan de evacuación.</div></div>
+      <div class="check"><div class="n">5</div><div>Potencia eléctrica verificada; si falta, generador 60–100 kVA con operador.</div></div>
+      <div class="check"><div class="n">6</div><div>Guardias OS-10 al día (~1 por cada 100–120 asistentes) + supervisor + paletas detectoras.</div></div>
+      <div class="check"><div class="n">7</div><div>Ambulancia con TENS presente durante todo el evento.</div></div>
+      <div class="check"><div class="n">8</div><div>Acceso: validación QR de Evently + pulsera por carrera, sin efectivo en puerta.</div></div>
+      <div class="check"><div class="n">9</div><div>Baños según exigencia del recinto; vallas para barra, accesos y escenario.</div></div>
+      <div class="check"><div class="n">10</div><div>Caja del día: garantía $500.000 + pagos en efectivo del evento; Evently liquida después.</div></div>
+    </div>
+  </section>
+
+  <!-- ===================== FUENTES ===================== -->
+  <footer id="fuentes">
+    <strong style="color:var(--ink-2)">Fuentes y referencias</strong> — investigación julio 2026. Los valores "Cotizar" son referencias de mercado, no cotizaciones formales.
+    <ul>
+      <li>Tineo Park — instalaciones: clublostroncos.cl/tineo-park</li>
+      <li>Aeroparque Bío Bío — eventos Dominga Open Air: soldout.evently.cl · cotización por correo (25-06-2026) · baños mínimos: dato del recinto (jul-2026)</li>
+      <li>Riesgo permiso de alcohol Talcahuano: sabes.cl (15-05-2026)</li>
+      <li>Evento masivo ≥20 días hábiles ante Delegación Presidencial: chileatiende.gob.cl ficha 3784 · subinterior.gob.cl</li>
+      <li>Evently — términos del cargo por servicio: evently.cl/terms-and-privacy-policy</li>
+      <li>UTM julio 2026 ($71.649): SII · patente modelada: 4 UTM ≈ $286.596 (real 2025: $277.060)</li>
+      <li>Carpas ($2.800–3.500/m²): 2x3.cl · todofiestas.cl · eventosycarpas.cl · carpasbeduinas.cl</li>
+      <li>Generador: skrental.com (0,17 UF/h, mín. 40 h) · kh2green.com · tienda.cummins.cl</li>
+      <li>Vallas papales (sin precio público): vallaspapa.cl · fullvallas.cl · vallas.cl · fencing.cl</li>
+      <li>Audio y escenario Concepción: bahiadiseno.cl · bestcorp.cl · 2x3.cl</li>
+      <li>Datos reales 2025: registros de tesorería CEEIND (venta, compras, sobrantes, $420.000 en insumos, 317 asistentes).</li>
+    </ul>
+    <p style="margin-top:14px">Documento de trabajo de los CEE · Excel maestro: <em>INFONDA 2026 — Escenarios y Presupuesto.xlsx</em> (hojas Dashboard y Linea_Tiempo replican este simulador).</p>
+  </footer>
+</main>
+
+<script>
+/* ============ Defaults del modelo (idénticos al Excel) ============ */
+const DEF = {
+  carreras: [
+    { n:'Medicina',              c:'var(--s1)', ent:[250,300,600] },
+    { n:'Ing. Civil Industrial', c:'var(--s2)', ent:[240,300,360] },
+    { n:'Derecho',               c:'var(--s3)', ent:[220,300,420] },
+    { n:'Ing. Civil Química',    c:'var(--s4)', ent:[150,200,270] },
+  ],
+  externos:[40,100,150],
+  cortesias:0.06,
+  evently:0.10,
+  olas:[
+    { n:'Preventa temprana (early bird)', pct:0.30, p:4000 },
+    { n:'Preventa general',               pct:0.40, p:6000 },
+    { n:'Venta general / día del evento', pct:0.20, p:8000 },
+    { n:'Externos (otras carreras)',      pct:0.10, p:9000 },
+  ],
+  sedes:[
+    { n:'Tineo Park — Cancha Chica',       arr:1700000, tineo:true  },
+    { n:'Tineo Park — Chica + ½ grande',   arr:2500000, tineo:true  },
+    { n:'Aeroparque Bío Bío',              arr:3200000, tineo:false },
+  ],
+  prodA:2400000, prodB:2270000,
+  prodBItems:[
+    { n:'Tarima / escenario modular (~6×4 m)',        min:400000, max:800000, val:600000, estado:'q' },
+    { n:'PA + mesa de sonido + operador',             min:500000, max:900000, val:700000, estado:'q' },
+    { n:'Iluminación de escenario',                   min:150000, max:350000, val:250000, estado:'q' },
+    { n:'DJ (jornada completa)',                      min:0,      max:0,      val:220000, estado:'c' },
+    { n:'Generador 60–100 kVA + combustible + flete', min:400000, max:600000, val:500000, estado:'q' },
+  ],
+  vallas:350000,
+  seg:[734000,900000,1200000],
+  amb:[300000,300000,600000],
+  insumos:[250000,350000,500000],
+  banosEscala:[400000,560000,800000],
+  nBanos:40, precioBano:80000, banos40Tineo:false,
+  carpaIncluir:false, carpaAncho:30, carpaLargo:50, carpaM2:3500,
+  utm:71649, nUtm:4,
+  pulsera:130, toro:180000, otros:15000, garantia:500000,
+  tragosPP:[1.3,1.5,1.8],
+  drinks:[
+    { n:'Terremoto',     mix:0.45, p:3000, c:850 },
+    { n:'Piscola',       mix:0.40, p:2500, c:950 },
+    { n:'Tequilazo',     mix:0.10, p:2500, c:720 },
+    { n:'Latas / otros', mix:0.05, p:2000, c:950 },
+  ],
+  iva:0.19,
+};
+let P = structuredClone(DEF);
+let st = { sede:0, prod:0, esc:1 };
+const ESC = ['Pesimista','Intermedio','Optimista'];
+
+/* ============ Modelo ============ */
+const precioProm  = () => P.olas.reduce((a,o)=>a+o.pct*o.p,0) / P.olas.reduce((a,o)=>a+o.pct,0);
+const precioTrago = () => P.drinks.reduce((a,d)=>a+d.mix*d.p,0);
+const costoTrago  = () => P.drinks.reduce((a,d)=>a+d.mix*d.c,0);
+const margenTrago = () => precioTrago()*(1-P.iva)-costoTrago();
+const patente     = () => P.utm*P.nUtm;
+const carpaCosto  = () => P.carpaAncho*P.carpaLargo*P.carpaM2;
+const syncProdB   = () => { P.prodB = P.prodBItems.reduce((a,i)=>a+i.val,0); };
+const estadoBadge = e => e==='c' ? '<span class="badge c">Confirmado</span>' : '<span class="badge q">Cotizar</span>';
+
+function calc(sede, prod, e){
+  const pp = precioProm(), mt = margenTrago();
+  const ent4 = P.carreras.reduce((a,c)=>a+c.ent[e],0);
+  const ext  = P.externos[e];
+  const totEnt = ent4+ext;
+  const asist = totEnt*(1+P.cortesias);
+  const ingEnt = totEnt*pp;
+  const tragos = asist*P.tragosPP[e];
+  const barra = tragos*mt;
+  const S = P.sedes[sede];
+  const vallas = S.tineo ? P.vallas : 0;
+  const carpa  = (S.tineo && P.carpaIncluir) ? carpaCosto() : 0;
+  const banos  = (!S.tineo || P.banos40Tineo) ? P.nBanos*P.precioBano : P.banosEscala[e];
+  const prodC  = prod===0 ? P.prodA : P.prodB;
+  const items = [
+    ['Sede', S.arr], ['Producción', prodC], ['Vallas papales', vallas],
+    ['Carpa (lluvia)', carpa], ['Baños químicos', banos],
+    ['Seguridad', P.seg[e]], ['Ambulancia', P.amb[e]], ['Patente alcohol', patente()],
+    ['Insumos generales', P.insumos[e]],
+    ['Pulseras', asist*P.pulsera], ['Toro mecánico', P.toro], ['Otros', P.otros],
+  ];
+  const gastos = items.reduce((a,i)=>a+i[1],0);
+  const balance = ingEnt+barra-gastos;
+  const peq = Math.max(0, Math.round((gastos-barra)/pp));
+  const carreras = P.carreras.map(c=>{
+    const en = c.ent[e], share = ent4>0 ? en/ent4 : 0;
+    const ing = en*pp;
+    const as = en*(1+P.cortesias);
+    const mb = (as + ext*(1+P.cortesias)*share) * P.tragosPP[e] * mt;
+    const costos = share*(gastos - ext*pp);
+    const res = ing+mb-costos;
+    return { n:c.n, c:c.c, ent:en, ing, asist:as, mb, costos, res, mg:(ing+mb)!==0?res/(ing+mb):0 };
+  });
+  return { ingEnt, barra, gastos, balance, peq, items, carreras, asist, totEnt, banos, carpa, pp };
+}
+
+/* ============ Formato ============ */
+const fmt0 = new Intl.NumberFormat('es-CL',{maximumFractionDigits:0});
+const clp = v => (v<0 ? '($'+fmt0.format(Math.round(-v))+')' : '$'+fmt0.format(Math.round(v)));
+const pct = v => (v*100).toFixed(1).replace('.',',')+'%';
+
+/* ============ Panel de parámetros (schema-driven) ============ */
+function fields(){
+  const e = st.esc;
+  const F = (label, get, set, step) => ({label, get, set, step: step||1});
+  return [
+    { g:`① Ingresos · entradas vendidas — escenario ${ESC[e]}`, items:[
+      F('Medicina',              ()=>P.carreras[0].ent[e], v=>P.carreras[0].ent[e]=v),
+      F('Ing. Civil Industrial', ()=>P.carreras[1].ent[e], v=>P.carreras[1].ent[e]=v),
+      F('Derecho',               ()=>P.carreras[2].ent[e], v=>P.carreras[2].ent[e]=v),
+      F('Ing. Civil Química',    ()=>P.carreras[3].ent[e], v=>P.carreras[3].ent[e]=v),
+      F('Externos / invitados',  ()=>P.externos[e],        v=>P.externos[e]=v),
+      F('Cortesías (%)',         ()=>P.cortesias*100,      v=>P.cortesias=v/100, 0.5),
+    ]},
+    { g:'② Precios de entrada (base CLP) y cargo Evently', items:[
+      F('Preventa temprana',   ()=>P.olas[0].p, v=>P.olas[0].p=v, 100),
+      F('Preventa general',    ()=>P.olas[1].p, v=>P.olas[1].p=v, 100),
+      F('Venta general / día', ()=>P.olas[2].p, v=>P.olas[2].p=v, 100),
+      F('Externos',            ()=>P.olas[3].p, v=>P.olas[3].p=v, 100),
+      F('Cargo Evently (%)',   ()=>P.evently*100, v=>P.evently=v/100, 0.5),
+    ]},
+    { g:'③ Producción técnica (CLP)', sub:'Dos opciones mutuamente excluyentes — el simulador usa la elegida en "Producción técnica" arriba. Opción A = un solo contrato (todo incluido). Opción B = autoproducción: se edita cada partida por separado y el Total se recalcula solo (no se edita a mano).', items:[
+      F('A · Concepsound (todo incluido)',     ()=>P.prodA, v=>P.prodA=v, 50000),
+      { sep:true, label:'— Opción B: autoproducción (cada partida se cotiza por separado) —' },
+      ...P.prodBItems.map((it,i)=> F('B · '+it.n, ()=>it.val, v=>{it.val=v;}, 5000)),
+      { ro:true, id:'prodBTotalParam', label:'B · Total Opción B (suma de las 5 partidas)', get:()=>P.prodB },
+    ]},
+    { g:'④ Infraestructura y estructuras (CLP)', items:[
+      F('Arriendo Tineo Chica',     ()=>P.sedes[0].arr, v=>P.sedes[0].arr=v, 50000),
+      F('Arriendo Tineo +½ grande', ()=>P.sedes[1].arr, v=>P.sedes[1].arr=v, 50000),
+      F('Arriendo Aeroparque',      ()=>P.sedes[2].arr, v=>P.sedes[2].arr=v, 50000),
+      F('Vallas papales (Tineo)',   ()=>P.valls,        v=>P.valls=v, 25000),
+    ]},
+    { g:'⑤ Carpa contingencia lluvia (solo Tineo)', items:[
+      F('Ancho (m)',           ()=>P.carpaAncho, v=>P.carpaAncho=v),
+      F('Largo (m)',           ()=>P.carpaLargo, v=>P.carpaLargo=v),
+      F('Precio por m² (CLP)', ()=>P.carpaM2,   v=>P.carpaM2=v, 100),
+    ]},
+    { g:'⑥ Baños químicos', items:[
+      F(`Escala Tineo — ${ESC[e]} (CLP)`, ()=>P.banosEscala[e], v=>P.banosEscala[e]=v, 20000),
+      F('Exigencia: n° de baños', ()=>P.nBanos,    v=>P.nBanos=v),
+      F('Exigencia: $ por baño',  ()=>P.precioBano, v=>P.precioBano=v, 5000),
+    ]},
+    { g:`⑦ Operación — escenario ${ESC[e]} (CLP)`, items:[
+      F('Seguridad (guardias)',  ()=>P.seg[e],     v=>P.seg[e]=v, 25000),
+      F('Ambulancia + TENS',     ()=>P.amb[e],     v=>P.amb[e]=v, 25000),
+      F('Insumos generales',     ()=>P.insumos[e], v=>P.insumos[e]=v, 25000),
+      F('Valor UTM',             ()=>P.utm,        v=>P.utm=v, 100),
+      F('Patente (n° de UTM)',   ()=>P.nUtm,       v=>P.nUtm=v, 0.5),
+      F('Pulsera unitaria',      ()=>P.pulsera,    v=>P.pulsera=v, 10),
+      F('Toro mecánico',         ()=>P.toro,       v=>P.toro=v, 10000),
+      F('Otros / bancarios',     ()=>P.otros,      v=>P.otros=v, 5000),
+    ]},
+    { g:`⑧ Barra — escenario ${ESC[e]}`, items:[
+      F('Tragos por persona',    ()=>P.tragosPP[e], v=>P.tragosPP[e]=v, 0.1),
+      F('IVA (%)',               ()=>P.iva*100,     v=>P.iva=v/100, 1),
+      F('Terremoto: precio',     ()=>P.drinks[0].p, v=>P.drinks[0].p=v, 100),
+      F('Terremoto: costo/vaso', ()=>P.drinks[0].c, v=>P.drinks[0].c=v, 10),
+      F('Piscola: precio',       ()=>P.drinks[1].p, v=>P.drinks[1].p=v, 100),
+      F('Piscola: costo/vaso',   ()=>P.drinks[1].c, v=>P.drinks[1].c=v, 10),
+      F('Tequilazo: precio',     ()=>P.drinks[2].p, v=>P.drinks[2].p=v, 100),
+      F('Tequilazo: costo/vaso', ()=>P.drinks[2].c, v=>P.drinks[2].c=v, 10),
+      F('Latas: precio',         ()=>P.drinks[3].p, v=>P.drinks[3].p=v, 100),
+      F('Latas: costo/vaso',     ()=>P.drinks[3].c, v=>P.drinks[3].c=v, 10),
+    ]},
+  ];
+}
+
+function buildParams(){
+  const body = document.getElementById('paramsBody');
+  body.innerHTML = '';
+  fields().forEach(grp=>{
+    const div = document.createElement('div');
+    div.className = 'pgroup';
+    const h = document.createElement('h4'); h.textContent = grp.g; div.appendChild(h);
+    if(grp.sub){ const s=document.createElement('p'); s.className='sub-note'; s.textContent=grp.sub; div.appendChild(s); }
+    const grid = document.createElement('div'); grid.className = 'pgrid tight';
+    grp.items.forEach(f=>{
+      if(f.sep){
+        const sep = document.createElement('div');
+        sep.style.cssText = 'grid-column:1/-1;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:6px 0 -4px;border-top:1px dashed var(--hair);padding-top:8px';
+        sep.textContent = f.label;
+        grid.appendChild(sep);
+        return;
+      }
+      const w = document.createElement('div'); w.className = 'pfield'+(f.ro?' ro':'');
+      const lab = document.createElement('label'); lab.textContent = f.label;
+      if(f.ro){
+        const v = document.createElement('span'); v.className='ro-val num';
+        if(f.id) v.id=f.id; v.textContent = clp(f.get());
+        w.appendChild(lab); w.appendChild(v);
+      } else {
+        const inp = document.createElement('input');
+        inp.type = 'number'; inp.step = f.step; inp.value = +(+f.get()).toFixed(2);
+        inp.addEventListener('input', ()=>{
+          const v = parseFloat(inp.value);
+          if(!isNaN(v) && v>=0){ f.set(v); syncProdB(); render(false); }
+        });
+        w.appendChild(lab); w.appendChild(inp);
+      }
+      grid.appendChild(w);
+    });
+    div.appendChild(grid);
+    body.appendChild(div);
+  });
+}
+
+/* ============ Controles ============ */
+function segInit(id, key){
+  const el = document.getElementById(id);
+  el.addEventListener('click', ev=>{
+    const b = ev.target.closest('button'); if(!b) return;
+    st[key] = +b.dataset.i;
+    [...el.querySelectorAll('button')].forEach(x=>x.setAttribute('aria-pressed', x===b ? 'true':'false'));
+    if(key==='esc') buildParams();   // los campos por-escenario cambian de contexto
+    render(false);
+  });
+}
+segInit('segSede','sede'); segInit('segProd','prod'); segInit('segEsc','esc');
+document.getElementById('swCarpa').addEventListener('change', e=>{ P.carpaIncluir = e.target.checked; render(false); });
+document.getElementById('swBanos40').addEventListener('change', e=>{ P.banos40Tineo = e.target.checked; render(false); });
+document.getElementById('btnReset').addEventListener('click', ()=>{
+  P = structuredClone(DEF);
+  syncProdB();
+  document.getElementById('swCarpa').checked = false;
+  document.getElementById('swBanos40').checked = false;
+  buildParams();
+  render(false);
+});
+
+/* ============ Línea de tiempo ============ */
+function hitos(){
+  const r = calc(st.sede, st.prod, 1); // referencia: intermedio
+  const prodC = st.prod===0 ? P.prodA : P.prodB;
+  return [
+    { d:58, t:'Elegir sede y negociar CLÁUSULA de cambio de fecha por lluvia', k:'crit',
+      m:0, note:'La cláusula es la base de toda la estrategia: sin ella, reagendar cuesta el arriendo completo.' },
+    { d:55, t:'Firma de sede: garantía + reserva (50% del arriendo)', k:'',
+      m:P.garantia+0.5*P.sedes[st.sede].arr, note:'Recuperable con cláusula; la garantía siempre se devuelve.' },
+    { d:45, t:'Abrir evento en Evently + lanzar preventa temprana', k:'',
+      m:0, note:'La reprogramación mantiene las entradas vendidas: vender temprano no aumenta el riesgo.' },
+    { d:45, t:'Contrato de producción + abono (~30%)', k:'',
+      m:0.3*prodC, note:'Incluir la cláusula de fecha también aquí. Real 2025: el DJ se reservó con $50.000.' },
+    { d:30, t:'Patente provisoria de alcohol (municipalidad)', k:'',
+      m:patente(), lose:true, note:'Es para fecha específica: si se reagenda, se re-solicita y se vuelve a pagar.' },
+    { d:30, t:'Pedido de pulseras', k:'',
+      m:r.asist*P.pulsera, note:'En 2025 llegaron tarde — pedir con 30 días. Sirven para la nueva fecha.' },
+    { d:28, t:'SOLICITUD EVENTO MASIVO — Delegación Presidencial (≥20 días hábiles)', k:'crit',
+      m:0, note:'chileatiende.gob.cl ficha 3784. El trámite más rígido: reagendar = re-presentar (+1 mes). Pueden pedir subsanaciones (5 días).' },
+    { d:21, t:'Decisión carpa: reservar con abono (~30%) o asumir plan de reagendamiento', k:'dec',
+      m:P.carpaIncluir ? 0.3*carpaCosto() : 0, note:'La carpa elimina el riesgo; el reagendamiento lo administra. Comparar costo vs. probabilidad de lluvia.' },
+    { d:14, t:'Confirmación carpa (saldo) / proponer fecha alternativa a proveedores', k:'dec',
+      m:P.carpaIncluir ? 0.7*carpaCosto() : 0, note:'Pronóstico extendido aún poco confiable a 14 días.' },
+    { d:7,  t:'GO / NO-GO — pronóstico confiable a 7 días', k:'crit',
+      m:0, note:'Si NO-GO: activar cláusulas, reprogramar Evently, re-presentar permisos, avisar proveedores.' },
+    { d:3,  t:'Compra insumos de barra NO perecibles (4 barras)', k:'',
+      m:r.asist*P.tragosPP[1]*costoTrago()*0.85, note:'≈85% del presupuesto de insumos; pisco, latas y bebidas se guardan.' },
+    { d:1,  t:'Perecibles + hielo', k:'',
+      m:r.asist*P.tragosPP[1]*costoTrago()*0.15, lose:true, note:'Única compra que se pierde completa — solo con GO confirmado.' },
+    { d:0,  t:'DÍA DEL EVENTO: caja del día (guardias, ambulancia, toro)', k:'',
+      m:P.seg[1]+P.amb[1]+P.toro, note:'Se pagan solo si se ejecuta. Evently liquida hasta 60 días hábiles después.' },
+  ];
+}
+function renderTimeline(){
+  const inp = document.getElementById('fechaEvento');
+  const base = new Date(inp.value + 'T12:00:00');
+  const list = document.getElementById('tlList');
+  if(isNaN(base.getTime())){ list.innerHTML = '<p class="src">Fecha inválida.</p>'; return; }
+  const fmtD = new Intl.DateTimeFormat('es-CL',{weekday:'short', day:'numeric', month:'short'});
+  list.innerHTML = hitos().map(h=>{
+    const dt = new Date(base); dt.setDate(dt.getDate()-h.d);
+    const badge = h.k==='crit' ? ' <span class="badge k">Crítico</span>' : (h.k==='dec' ? ' <span class="badge q">Decisión</span>' : '');
+    const monto = h.m>0 ? `<div class="tlmonto num">${clp(h.m)} <small>${h.lose?'· SE PIERDE si se reagenda':'comprometidos'}</small></div>` : '';
+    return `<div class="tlitem ${h.k}">
+      <div class="tlhead"><span class="tldate">${fmtD.format(dt)}</span><span class="tldias">D−${h.d}</span><span class="tltitle">${h.t}</span>${badge}</div>
+      ${monto}<div class="tlnote">${h.note}</div>
+    </div>`;
+  }).join('');
+  const perdida = patente() + calc(st.sede,st.prod,1).asist*P.tragosPP[1]*costoTrago()*0.15;
+  document.getElementById('perdidaTxt').innerHTML =
+    `Pérdida estimada reagendando incluso a última hora: <strong>${clp(perdida)}</strong> — patente de alcohol (${clp(patente())}, se re-solicita) + perecibles (~15% del presupuesto de barra). Todo lo demás — sede, producción, carpa, pulseras, insumos no perecibles, entradas Evently — se traslada a la nueva fecha con las cláusulas firmadas.`;
+}
+document.getElementById('fechaEvento').addEventListener('change', renderTimeline);
+
+/* ============ Render ============ */
+function barRow(label, color, value, max, fmtFn){
+  const w = Math.max(0, max>0 ? value/max*100 : 0);
+  return `<div class="brow">
+    <div class="bl"><span class="dot" style="background:${color}"></span><span title="${label}">${label}</span></div>
+    <div class="track"><div class="fill" style="width:${w}%;background:${color}"></div></div>
+    <div class="bval num">${fmtFn(value)}</div>
+  </div>`;
+}
+
+function buildProdTable(){
+  const body = document.querySelector('#prodTable tbody');
+  if(!body) return;
+  const rango = it => (it.min||it.max) ? clp(it.min)+' – '+clp(it.max) : '—';
+  body.innerHTML =
+    P.prodBItems.map(it=>`<tr>
+      <td>${it.n}</td>
+      <td class="r num">${rango(it)}</td>
+      <td class="r num" style="font-weight:700">${clp(it.val)}</td>
+      <td>${estadoBadge(it.estado)}</td>
+    </tr>`).join('') +
+    `<tr class="total"><td>Total Opción B</td><td></td><td class="r num">${clp(P.prodB)}</td><td></td></tr>` +
+    `<tr><td>Vallas papales (~80 u · solo Tineo, con cualquier opción)</td>
+       <td class="r num">$250.000 – $500.000</td>
+       <td class="r num" style="font-weight:700">${clp(P.valls)}</td>
+       <td>${'<span class="badge q">Cotizar</span>'}</td></tr>` +
+    `<tr><td>Carpa ${P.carpaAncho}×${P.carpaLargo} m, 6 m cumbrera / 3 m lateral<br><span class="src">${fmt0.format(P.carpaAncho*P.carpaLargo)} m² · ${clp(P.carpaM2)}/m² · solo Tineo</span></td>
+       <td class="r num">$4.200.000 – $5.250.000</td>
+       <td class="r num" style="font-weight:700">${clp(carpaCosto())}</td>
+       <td>${'<span class="badge q">Cotizar</span>'}</td></tr>`;
+}
+
+function render(rebuildParams=true){
+  const r = calc(st.sede, st.prod, st.esc);
+
+  // KPIs hero (config actual, 3 escenarios)
+  const ids = [['kpiP',0],['kpiI',1],['kpiO',2]];
+  ids.forEach(([id,e])=>{
+    const rr = calc(st.sede, st.prod, e);
+    const el = document.getElementById(id);
+    el.textContent = clp(rr.balance);
+    el.classList.toggle('neg', rr.balance<0);
+    document.getElementById(id+'cap').textContent = `${fmt0.format(rr.totEnt)} entradas · balance neto`;
+  });
+  document.getElementById('kpiNote').textContent =
+    `Configuración: ${P.sedes[st.sede].n} · Producción ${st.prod===0?'A (Concepsound)':'B (autoproducción)'}` +
+    (P.carpaIncluir && P.sedes[st.sede].tineo ? ` · carpa ${P.carpaAncho}×${P.carpaLargo} m incluida` : '') +
+    (P.banos40Tineo ? ' · exigencia 40 baños aplicada a Tineo' : '');
+
+  // Big result
+  const bal = document.getElementById('simBalance');
+  bal.textContent = clp(r.balance);
+  bal.style.color = r.balance<0 ? 'var(--neg)' : 'var(--ink)';
+  document.getElementById('simCfg').textContent =
+    `${P.sedes[st.sede].n} · Producción ${st.prod===0?'A':'B'} · ${ESC[st.esc]} — ${fmt0.format(r.totEnt)} entradas · ${fmt0.format(Math.round(r.asist))} asistentes`;
+  document.getElementById('simIngEnt').textContent = clp(r.ingEnt);
+  document.getElementById('simBarra').textContent  = clp(r.barra);
+  document.getElementById('simGastos').textContent = clp(r.gastos);
+  document.getElementById('simPeq').textContent    = fmt0.format(r.peq)+' entradas';
+  document.getElementById('flagNeg').classList.toggle('on', r.balance<0);
+  document.getElementById('flagAero').classList.toggle('on', st.sede===2);
+  document.getElementById('flagBanosTxt').textContent = `${P.nBanos} × ${clp(P.precioBano)} = ${clp(P.nBanos*P.precioBano)}`;
+  const carpaOn = P.carpaIncluir && P.sedes[st.sede].tineo;
+  document.getElementById('flagCarpa').classList.toggle('on', carpaOn);
+  if(carpaOn) document.getElementById('flagCarpaTxt').textContent =
+    `${P.carpaAncho}×${P.carpaLargo} m (${fmt0.format(P.carpaAncho*P.carpaLargo)} m²) ≈ ${clp(carpaCosto())}`;
+  document.getElementById('carpaCosto').textContent = `(${P.carpaAncho}×${P.carpaLargo} m ≈ ${clp(carpaCosto())})`;
+
+  // Gasto bars
+  const sorted = [...r.items].filter(i=>i[1]>0).sort((a,b)=>b[1]-a[1]);
+  const top = sorted.slice(0,7);
+  const resto = sorted.slice(7).reduce((a,i)=>a+i[1],0);
+  if(resto>0) top.push(['Resto', resto]);
+  const gmax = top.length ? top[0][1] : 1;
+  document.getElementById('gastoBars').innerHTML =
+    top.map(i=>barRow(i[0], 'var(--accent)', i[1], gmax, clp)).join('');
+
+  // Matrix
+  const tb = document.querySelector('#matrixTable tbody');
+  tb.innerHTML = P.sedes.map((s,si)=>{
+    const cells = [0,1,2].map(e=>{
+      const v = calc(si, st.prod, e).balance;
+      const hl = (si===st.sede && e===st.esc) ? ' cellhl' : '';
+      const ng = v<0 ? ' neg' : '';
+      return `<td class="r num${ng}${hl}">${clp(v)}</td>`;
+    }).join('');
+    return `<tr><td>${s.n}</td>${cells}</tr>`;
+  }).join('');
+
+  // Carreras
+  document.getElementById('escLabel').textContent = ESC[st.esc];
+  const cmax = Math.max(...r.carreras.map(c=>c.res), 1);
+  document.getElementById('carreraBars').innerHTML =
+    r.carreras.map(c=>barRow(c.n, c.c, c.res, cmax, clp)).join('');
+  const ct = document.querySelector('#carreraTable tbody');
+  ct.innerHTML = r.carreras.map(c=>
+    `<tr><td><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:${c.c};margin-right:7px"></span>${c.n}</td>
+     <td class="r num">${fmt0.format(c.ent)}</td>
+     <td class="r num">${clp(c.ing)}</td>
+     <td class="r num">${clp(c.mb)}</td>
+     <td class="r num">${clp(c.costos)}</td>
+     <td class="r num" style="font-weight:700;${c.res<0?'color:var(--neg)':''}">${clp(c.res)}</td>
+     <td class="r num">${pct(c.mg)}</td></tr>`
+  ).join('') +
+  `<tr class="total"><td>Total 4 carreras (= balance global)</td>
+    <td class="r num">${fmt0.format(r.carreras.reduce((a,c)=>a+c.ent,0))}</td>
+    <td class="r num">${clp(r.carreras.reduce((a,c)=>a+c.ing,0))}</td>
+    <td class="r num">${clp(r.carreras.reduce((a,c)=>a+c.mb,0))}</td>
+    <td class="r num">${clp(r.carreras.reduce((a,c)=>a+c.costos,0))}</td>
+    <td class="r num">${clp(r.carreras.reduce((a,c)=>a+c.res,0))}</td><td></td></tr>`;
+
+  // Olas / Evently
+  const ot = document.querySelector('#olasTable tbody');
+  ot.innerHTML = P.olas.map(o=>
+    `<tr><td>${o.n}</td><td class="r num">${pct(o.pct)}</td><td class="r num">${clp(o.p)}</td><td class="r num">${clp(o.p*(1+P.evently))}</td></tr>`
+  ).join('') +
+  `<tr class="total"><td>Precio promedio ponderado</td><td class="r num">${pct(P.olas.reduce((a,o)=>a+o.pct,0))}</td>
+   <td class="r num">${clp(precioProm())}</td><td class="r num">${clp(precioProm()*(1+P.evently))}</td></tr>`;
+
+  // Drinks
+  const rows = P.drinks.map(d=>({ n:d.n, v:d.p*(1-P.iva)-d.c, p:d.p }));
+  const dmax = Math.max(...rows.map(x=>x.v), 1);
+  document.getElementById('drinkBars').innerHTML =
+    rows.map(x=>barRow(`${x.n} · $${fmt0.format(x.p)}`, 'var(--accent)', x.v, dmax, clp)).join('');
+
+  // Compra insumos por carrera
+  const bt = document.querySelector('#compraTable tbody');
+  const extAs = P.externos[st.esc]*(1+P.cortesias);
+  const cRows = r.carreras.map(c=>{
+    const as = c.asist;
+    return `<tr><td><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:${c.c};margin-right:7px"></span>${c.n}</td>
+      <td class="r num">${fmt0.format(Math.round(as))}</td>
+      <td class="r num">${clp(as*P.tragosPP[st.esc]*costoTrago())}</td>
+      <td class="r num">${clp(as*P.tragosPP[st.esc]*precioTrago())}</td>
+      <td class="r num">${clp(as*P.tragosPP[st.esc]*margenTrago())}</td></tr>`;
+  });
+  cRows.push(`<tr><td style="color:var(--muted)">Externos (repartir entre barras)</td>
+    <td class="r num" style="color:var(--muted)">${fmt0.format(Math.round(extAs))}</td>
+    <td class="r num" style="color:var(--muted)">${clp(extAs*P.tragosPP[st.esc]*costoTrago())}</td>
+    <td class="r num" style="color:var(--muted)">${clp(extAs*P.tragosPP[st.esc]*precioTrago())}</td>
+    <td class="r num" style="color:var(--muted)">${clp(extAs*P.tragosPP[st.esc]*margenTrago())}</td></tr>`);
+  bt.innerHTML = cRows.join('');
+
+  // Producción cards
+  document.getElementById('prodAVal').textContent = clp(P.prodA);
+  document.getElementById('prodBVal').textContent = clp(P.prodB);
+  document.getElementById('prodDif').textContent  = clp(Math.abs(P.prodA-P.prodB));
+  // Tabla partida-por-partida (refleja el banco) + total B en el banco
+  buildProdTable();
+  const ptp = document.getElementById('prodBTotalParam'); if(ptp) ptp.textContent = clp(P.prodB);
+
+  renderTimeline();
+  if(rebuildParams) buildParams();
+}
+
+syncProdB();
+buildParams();
+render(false);
+</script>
+</body></html>
